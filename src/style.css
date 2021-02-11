@@ -61,11 +61,11 @@
 }
 
 .selectContainer .listWrapper.is-bottom {
-  top: calc(var(--height) + 4px);
+  top: calc(var(--height, 42px) + 4px);
 }
 
 .selectContainer .listWrapper.is-top {
-  bottom: calc(var(--height) + 4px);
+  bottom: calc(var(--height, 42px) + 4px);
 }
 
 .selectContainer .selectedItem {
