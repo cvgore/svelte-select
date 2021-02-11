@@ -658,7 +658,6 @@
   class:multiSelect={isMulti}
   class:disabled={isDisabled}
   class:focused={isFocused}
-  style={containerStyles}
   on:click={handleClick}
   bind:this={container}>
 
@@ -685,7 +684,6 @@
       on:focus={handleFocus}
       bind:value={filterText}
       placeholder={placeholderText}
-      style={inputStyles}
       disabled />
   {:else}
     <input
@@ -693,8 +691,7 @@
       bind:this={input}
       on:focus={handleFocus}
       bind:value={filterText}
-      placeholder={placeholderText}
-      style={inputStyles} />
+      placeholder={placeholderText} />
   {/if}
 
   {#if !isMulti && showSelectedItem}
