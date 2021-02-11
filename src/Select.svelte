@@ -412,24 +412,29 @@
     if (!target || !container) return;
     const { top, height, width } = container.getBoundingClientRect();
 
-    target.style["min-width"] = `${width}px`;
-    target.style.width = `${listAutoWidth ? "auto" : "100%"}`;
-    target.style.left = "0";
+    // target.style["min-width"] = `${width}px`;
+    // target.style.width = `${listAutoWidth ? "auto" : "100%"}`;
+    // target.style.left = "0";
 
     if (listPlacement === "top") {
-      target.style.bottom = `${height + 5}px`;
+      !target.classList.contains('is-top') && target.classList.add('is-top');
+      // target.style.bottom = `${height + 5}px`;
     } else {
-      target.style.top = `${height + 5}px`;
+      !target.classList.contains('is-bottom') && target.classList.add('is-bottom');
+      // target.style.top = `${height + 5}px`;
     }
 
     target = target;
 
     if (listPlacement === "auto" && isOutOfViewport(target).bottom) {
-      target.style.top = ``;
-      target.style.bottom = `${height + 5}px`;
+      !target.classList.contains('is-top') && target.classList.add('is-top');
+      target.classList.contains('is-bottom') && target.classList.remove('is-bottom');
+
+      // target.style.top = ``;
+      // target.style.bottom = `${height + 5}px`;
     }
 
-    target.style.visibility = "";
+    // target.style.visibility = "";
   }
 
   function handleKeyDown(e) {
@@ -563,12 +568,13 @@
     }
 
     target = document.createElement("div");
+    target.classList.add('listWrapper');
 
-    Object.assign(target.style, {
-      position: "absolute",
-      "z-index": 2,
-      visibility: "hidden"
-    });
+    // Object.assign(target.style, {
+    //   position: "absolute",
+    //   "z-index": 2,
+    //   visibility: "hidden"
+    // });
 
     list = list;
     target = target;
@@ -640,168 +646,6 @@
     removeList();
   });
 </script>
-
-<style>
-  .selectContainer {
-    --padding: 0 16px;
-
-    border: var(--border, 1px solid #d8dbdf);
-    border-radius: var(--borderRadius, 3px);
-    height: var(--height, 42px);
-    position: relative;
-    display: flex;
-    align-items: center;
-    padding: var(--padding);
-    background: var(--background, #fff);
-  }
-
-  .selectContainer input {
-    cursor: default;
-    border: none;
-    color: var(--inputColor, #3f4f5f);
-    height: var(--height, 42px);
-    line-height: var(--height, 42px);
-    padding: var(--inputPadding, var(--padding));
-    width: 100%;
-    background: transparent;
-    font-size: var(--inputFontSize, 14px);
-    letter-spacing: var(--inputLetterSpacing, -0.08px);
-    position: absolute;
-    left: var(--inputLeft, 0);
-  }
-
-  .selectContainer input::placeholder {
-    color: var(--placeholderColor, #78848f);
-    opacity: var(--placeholderOpacity, 1);
-  }
-
-  .selectContainer input:focus {
-    outline: none;
-  }
-
-  .selectContainer:hover {
-    border-color: var(--borderHoverColor, #b2b8bf);
-  }
-
-  .selectContainer.focused {
-    border-color: var(--borderFocusColor, #006fe8);
-  }
-
-  .selectContainer.disabled {
-    background: var(--disabledBackground, #ebedef);
-    border-color: var(--disabledBorderColor, #ebedef);
-    color: var(--disabledColor, #c1c6cc);
-  }
-
-  .selectContainer.disabled input::placeholder {
-    color: var(--disabledPlaceholderColor, #c1c6cc);
-    opacity: var(--disabledPlaceholderOpacity, 1);
-  }
-
-  .selectedItem {
-    line-height: var(--height, 42px);
-    height: var(--height, 42px);
-    overflow-x: hidden;
-    padding: var(--selectedItemPadding, 0 20px 0 0);
-  }
-
-  .selectedItem:focus {
-    outline: none;
-  }
-
-  .clearSelect {
-    position: absolute;
-    right: var(--clearSelectRight, 10px);
-    top: var(--clearSelectTop, 11px);
-    bottom: var(--clearSelectBottom, 11px);
-    width: var(--clearSelectWidth, 20px);
-    color: var(--clearSelectColor, #c5cacf);
-    flex: none !important;
-  }
-
-  .clearSelect:hover {
-    color: var(--clearSelectHoverColor, #2c3e50);
-  }
-
-  .selectContainer.focused .clearSelect {
-    color: var(--clearSelectFocusColor, #3f4f5f);
-  }
-
-  .indicator {
-    position: absolute;
-    right: var(--indicatorRight, 10px);
-    top: var(--indicatorTop, 11px);
-    width: var(--indicatorWidth, 20px);
-    height: var(--indicatorHeight, 20px);
-    color: var(--indicatorColor, #c5cacf);
-  }
-
-  .indicator svg {
-    display: inline-block;
-    fill: var(--indicatorFill, currentcolor);
-    line-height: 1;
-    stroke: var(--indicatorStroke, currentcolor);
-    stroke-width: 0;
-  }
-
-  .spinner {
-    position: absolute;
-    right: var(--spinnerRight, 10px);
-    top: var(--spinnerLeft, 11px);
-    width: var(--spinnerWidth, 20px);
-    height: var(--spinnerHeight, 20px);
-    color: var(--spinnerColor, #51ce6c);
-    animation: rotate 0.75s linear infinite;
-  }
-
-  .spinner_icon {
-    display: block;
-    height: 100%;
-    transform-origin: center center;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    -webkit-transform: none;
-  }
-
-  .spinner_path {
-    stroke-dasharray: 90;
-    stroke-linecap: round;
-  }
-
-  .multiSelect {
-    display: flex;
-    padding: var(--multiSelectPadding, 0 35px 0 16px);
-    height: auto;
-    flex-wrap: wrap;
-    align-items: stretch;
-  }
-
-  .multiSelect > * {
-    flex: 1 1 50px;
-  }
-
-  .selectContainer.multiSelect input {
-    padding: var(--multiSelectInputPadding, 0);
-    position: relative;
-    margin: var(--multiSelectInputMargin, 0);
-  }
-
-  .hasError {
-    border: var(--errorBorder, 1px solid #ff2d55);
-    background: var(--errorBackground, #fff);
-  }
-
-  @keyframes rotate {
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-</style>
 
 <svelte:window
   on:click={handleWindowClick}

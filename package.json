@@ -45,5 +45,7 @@
     "index.d.ts",
     "Select.js"
   ],
-  "dependencies": {}
+  "dependencies": {
+    "serve": "8"
+  }
 }
