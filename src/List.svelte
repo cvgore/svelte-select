@@ -207,29 +207,29 @@
 
 <svelte:window on:keydown="{handleKeyDown}" />
 
-{#if isVirtualList}
-<div class="listContainer virtualList" bind:this={container}>
+<!--{#if isVirtualList}-->
+<!--<div class="listContainer virtualList" bind:this={container}>-->
 
-  <VirtualList {items} {itemHeight} let:item let:i>
+<!--  <VirtualList {items} {itemHeight} let:item let:i>-->
 
-    <div on:mouseover="{() => handleHover(i)}" on:click="{event => handleClick({item, i, event})}"
-        class="listItem">
-          <svelte:component
-            this="{Item}"
-            {item}
-            {filterText}
-            {getOptionLabel}
-            isFirst="{isItemFirst(i)}"
-            isActive="{isItemActive(item, selectedValue, optionIdentifier)}"
-            isHover="{isItemHover(hoverItemIndex, item, i, items)}"
-          />
-    </div>
+<!--    <div on:mouseover="{() => handleHover(i)}" on:click="{event => handleClick({item, i, event})}"-->
+<!--        class="listItem">-->
+<!--          <svelte:component-->
+<!--            this="{Item}"-->
+<!--            {item}-->
+<!--            {filterText}-->
+<!--            {getOptionLabel}-->
+<!--            isFirst="{isItemFirst(i)}"-->
+<!--            isActive="{isItemActive(item, selectedValue, optionIdentifier)}"-->
+<!--            isHover="{isItemHover(hoverItemIndex, item, i, items)}"-->
+<!--          />-->
+<!--    </div>-->
 
-</VirtualList>
-</div>
-{/if}
-
-{#if !isVirtualList}
+<!--</VirtualList>-->
+<!--</div>-->
+<!--{/if}-->
+<!---->
+<!--{#if !isVirtualList}-->
 <div class="listContainer" bind:this={container}>
   {#each items as item, i}
     {#if item.isGroupHeader && !item.isSelectable}
@@ -257,4 +257,4 @@
     {/if}
   {/each}
 </div>
-{/if}
+<!--{/if}-->
