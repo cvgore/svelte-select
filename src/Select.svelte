@@ -741,17 +741,7 @@
 
   {#if isWaiting}
     <div class="spinner">
-      <svg class="spinner_icon" viewBox="25 25 50 50">
-        <circle
-          class="spinner_path"
-          cx="50"
-          cy="50"
-          r="20"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="5"
-          stroke-miterlimit="10" />
-      </svg>
+      <i class="fas fa-spinner fa-spin"></i>
     </div>
   {/if}
 </div>

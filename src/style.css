@@ -117,10 +117,10 @@
 
 .selectContainer .spinner {
   position: absolute;
-  right: var(--spinnerRight, 10px);
-  top: var(--spinnerLeft, 11px);
-  width: var(--spinnerWidth, 20px);
-  height: var(--spinnerHeight, 20px);
+  right: var(--spinnerRight, 12px);
+  top: var(--spinnerLeft, 12px);
+  width: var(--spinnerWidth, 16px);
+  height: var(--spinnerHeight, 16px);
   color: var(--spinnerColor, #51ce6c);
   animation: rotate 0.75s linear infinite;
 }
