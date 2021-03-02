@@ -303,3 +303,12 @@
   fill: var(--multiClearFill, #EBEDEF);
   vertical-align: top;
 }
+.selectContainer .listContainer .listItem {
+  padding: 0.328rem 0.856rem;
+}
+
+.selectContainer .listContainer .listItem:hover {
+  background: rgba(0, 111, 255, .3);
+  user-select: none;
+  cursor: pointer;
+}
